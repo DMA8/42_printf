@@ -52,7 +52,10 @@ SRCS			=	ft_bzero.c \
 					ft_lstlast.c \
 					ft_lstnew.c \
 					ft_lstsize.c \
-					ft_putunsignedint_fd.c
+					ft_putunsignedint_fd.c \
+					ft_putnbr_hex.c \
+					ft_put_void_ptr.c \
+					ft_printf.c
 
 OBJS			= $(SRCS:.c=.o)
 D_FILE			= $(OBJS:.o=.d)

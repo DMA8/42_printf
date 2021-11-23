@@ -4,19 +4,14 @@
 
 //DONE ft_putchar_fd  %c
 //DONE ft_putstr_fd   %s
-//ft_putpointed_fd %p (pointer arg is printed in hex)
+//DONE ft_putpointed_fd %p (pointer arg is printed in hex)
 //DONE ft_putnbr_fd   %d (decimal base 10) number
 // DONE ft_putint_fd   %i (integer base 10)
 //DONE ft_putunsignedint %u (unsigned base 10) number
-//ft_puthex_lower_case %x hex in lowercale
-//ft_puthex_upper_case %X hex in uppercase
-//%% print a percent sign
-//printf return s symbols it did print
-
-// void	ft_puthex_fd(void *ptr, fd)
-// {
-
-// }
+//DONE ft_puthex_lower_case %x hex in lowercale
+//DONE ft_puthex_upper_case %X hex in uppercase
+//DONE %% print a percent sign
+//DONE printf return s symbols it did print
 
 static int	flag_handler(va_list ap, const char *input_str, int *ind)
 {
@@ -37,6 +32,10 @@ static int	flag_handler(va_list ap, const char *input_str, int *ind)
 		n_char_printed = ft_putchar_fd('%', 1);
 	else if (input_str[local_ind] == 's')
 		n_char_printed = ft_putstr_fd(va_arg(ap, char *), 1);
+	else if (input_str[local_ind] == 'x' || input_str[local_ind] == 'X')
+		n_char_printed = ft_putnbr_hex(va_arg(ap, int), input_str[local_ind], 1);
+	else if (input_str[local_ind] == 'p')
+		n_char_printed = ft_put_void_ptr(va_arg(ap, void *), 1);
 	*ind += 1;
 	return (n_char_printed);
 }
@@ -81,15 +80,15 @@ int	ft_printf(const char *input_str, ...)
 
 
 
-int main()
-{
-	//printf("ABOBA%d", 3);
-	int a = 0;
-	int b = 4;
-	//int c = 5;
-	//printf("%u\n", a);
-	printf("our returned %d\n",ft_printf("our unsigned is %u and so long %d please, %c\n", a, b, '~'));
-	printf("original returned %d\n", printf("our unsigned is %u and so long %d please, %c\n", a, b, '~'));
+// int main()
+// {
+// 	//printf("ABOBA%d", 3);
+// 	int a = 0;
+// 	int b = 4;
+// 	//int c = 5;
+// 	//printf("%u\n", a);
+// 	printf("our returned %d\n",ft_printf("our unsigned is %u and so long %d please, %c\n", a, b, '~'));
+// 	printf("original returned %d\n", printf("our unsigned is %u and so long %d please, %c\n", a, b, '~'));
 
-	// ft_printf("Numbers: %d %d %d %c  %s \n", a, b, c,'t', "aboba");
-}
+// 	// ft_printf("Numbers: %d %d %d %c  %s \n", a, b, c,'t', "aboba");
+// }
